@@ -682,18 +682,18 @@ def main(args):
 
     # Load the tokenizers
     tokenizer_one = AutoTokenizer.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="tokenizer", revision=args.revision, use_fast=False
+        args.pretrained_model_name_or_path, subfolder="tokenizer", revision=args.revision,variant=args.variant, use_fast=False
     )
     tokenizer_two = AutoTokenizer.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="tokenizer_2", revision=args.revision, use_fast=False
+        args.pretrained_model_name_or_path, subfolder="tokenizer_2", revision=args.revision,variant=args.variant, use_fast=False
     )
 
     # import correct text encoder classes
     text_encoder_cls_one = import_model_class_from_model_name_or_path(
-        args.pretrained_model_name_or_path, args.revision
+        args.pretrained_model_name_or_path, args.revision,variant=args.variant
     )
     text_encoder_cls_two = import_model_class_from_model_name_or_path(
-        args.pretrained_model_name_or_path, args.revision, subfolder="text_encoder_2"
+        args.pretrained_model_name_or_path, args.revision,variant=args.variant, subfolder="text_encoder_2"
     )
 
     # Load scheduler and models
